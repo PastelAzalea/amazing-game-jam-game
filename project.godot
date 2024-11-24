@@ -53,4 +53,5 @@ Jump={
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.105469, 0.457031, 0.730469, 1)
