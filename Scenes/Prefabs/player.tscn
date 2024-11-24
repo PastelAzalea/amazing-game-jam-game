@@ -1,10 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://w7m6tehvvy3g"]
+[gd_scene load_steps=22 format=3 uid="uid://w7m6tehvvy3g"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qt7d6"]
 [ext_resource type="Texture2D" uid="uid://cbss87b7xk5lc" path="res://Assets/Spritesheet/platformerPack_character.png" id="2_q0cxm"]
 [ext_resource type="Texture2D" uid="uid://dxp77wq60c2rr" path="res://Assets/Textures/CloudTexture.png" id="3_8vxmb"]
 [ext_resource type="Texture2D" uid="uid://cj27wjdu77qod" path="res://Assets/Spritesheet/Lizard.png" id="4_eckce"]
 [ext_resource type="Texture2D" uid="uid://dyf3007fjxe8k" path="res://Goose.png" id="5_swi4g"]
+[ext_resource type="Texture2D" uid="uid://d1dfny3mtkqvb" path="res://frog.png" id="6_14axh"]
+[ext_resource type="Texture2D" uid="uid://1a74q2wvs3qg" path="res://frog_walk.png" id="7_f84eh"]
+[ext_resource type="Texture2D" uid="uid://gucaq8gq84vv" path="res://frog_walk_3.png" id="8_21qqt"]
+[ext_resource type="Texture2D" uid="uid://qyiyidn84y6p" path="res://frog_walk_2.png" id="8_oblk4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57bci"]
 atlas = ExtResource("2_q0cxm")
@@ -121,6 +125,47 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwy8o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_14axh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_f84eh")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_14axh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_21qqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oblk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f84eh")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_qt7d6")
 
@@ -184,6 +229,11 @@ animation = &"Idle"
 [node name="GooseSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_vkykb")
+animation = &"Walk"
+
+[node name="FrogSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_qwy8o")
 animation = &"Walk"
 
 [connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
