@@ -5,7 +5,7 @@ var active = true
 
 
 @export_category("Snake Properties") # You can tweak these changes according to your likings
-@export var move_speed : float = 200
+@export var move_speed : float = 400
 @export var jump_force : float = 600
 @export var gravity : float = 30
 @export var max_jump_count : int = 0
