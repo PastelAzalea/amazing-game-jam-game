@@ -24,7 +24,7 @@ var jump_count : int = 2
 
 var is_grounded : bool = false
 
-@onready var player_sprite = $AnimatedSprite2D
+@onready var player_sprite = $FrogSprite2D
 @onready var spawn_point = %SpawnPoint
 @onready var particle_trails = $ParticleTrails
 @onready var death_particles = $DeathParticles
@@ -48,9 +48,10 @@ func set_active_animal():
 		match active_character:
 			"lizard": player_sprite = $LizardSprite2D
 			"goose": player_sprite = $GooseSprite2D
+			"frog": player_sprite = $FrogSprite2D
 			_: player_sprite = $AnimatedSprite2D
 	set_active_character.emit(active_character)
-	var allsprites =[$LizardSprite2D,$AnimatedSprite2D,$GooseSprite2D]
+	var allsprites =[$LizardSprite2D,$AnimatedSprite2D,$GooseSprite2D, $FrogSprite2D]
 	for sprite in allsprites:
 		sprite.visible = sprite==player_sprite
 
