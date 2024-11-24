@@ -46,10 +46,11 @@ func set_active_animal():
 			active_character = character
 	if current_character != active_character:
 		match active_character:
-			"lizard": player_sprite = $LizardSpride2D
+			"lizard": player_sprite = $LizardSprite2D
+			"goose": player_sprite = $GooseSprite2D
 			_: player_sprite = $AnimatedSprite2D
 	set_active_character.emit(active_character)
-	var allsprites =[$LizardSpride2D,$AnimatedSprite2D]
+	var allsprites =[$LizardSprite2D,$AnimatedSprite2D,$GooseSprite2D]
 	for sprite in allsprites:
 		sprite.visible = sprite==player_sprite
 

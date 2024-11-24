@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://w7m6tehvvy3g"]
+[gd_scene load_steps=17 format=3 uid="uid://w7m6tehvvy3g"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qt7d6"]
 [ext_resource type="Texture2D" uid="uid://cbss87b7xk5lc" path="res://Assets/Spritesheet/platformerPack_character.png" id="2_q0cxm"]
 [ext_resource type="Texture2D" uid="uid://dxp77wq60c2rr" path="res://Assets/Textures/CloudTexture.png" id="3_8vxmb"]
 [ext_resource type="Texture2D" uid="uid://cj27wjdu77qod" path="res://Assets/Spritesheet/Lizard.png" id="4_eckce"]
+[ext_resource type="Texture2D" uid="uid://dyf3007fjxe8k" path="res://Goose.png" id="5_swi4g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57bci"]
 atlas = ExtResource("2_q0cxm")
@@ -93,6 +94,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkykb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_swi4g")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_swi4g")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_swi4g")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_qt7d6")
 
@@ -148,9 +176,14 @@ scale_amount_max = 30.0
 scale_amount_curve = SubResource("Curve_m2jh0")
 color_ramp = SubResource("Gradient_3gc37")
 
-[node name="LizardSpride2D" type="AnimatedSprite2D" parent="."]
+[node name="LizardSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_2toul")
 animation = &"Idle"
+
+[node name="GooseSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_vkykb")
+animation = &"Walk"
 
 [connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
