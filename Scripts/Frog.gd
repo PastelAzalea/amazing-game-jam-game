@@ -5,13 +5,13 @@ var active = false
 
 @export_category("Frog Properties") # You can tweak these changes according to your likings
 @export var move_speed : float = 400
-@export var jump_force : float = 800
+@export var jump_force : float = 600
 @export var gravity : float = 30
 @export var max_jump_count : int = 2
 
 var jump_step = 500
 var current_jump_step = 0
-var max_jump_step = 1400
+var max_jump_step = 700
 
 var double_jump = false
 var jump_count : int = 2
@@ -19,7 +19,7 @@ var jump_count : int = 2
 # --------- BUILT-IN FUNCTIONS ---------- #
 
 func _ready():
-	player = $"../Player"
+	player = $".."
 
 func _process(delta):
 	if !active:

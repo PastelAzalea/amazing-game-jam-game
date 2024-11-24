@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://w7m6tehvvy3g"]
+[gd_scene load_steps=27 format=3 uid="uid://w7m6tehvvy3g"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qt7d6"]
 [ext_resource type="Texture2D" uid="uid://cbss87b7xk5lc" path="res://Assets/Spritesheet/platformerPack_character.png" id="2_q0cxm"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://1a74q2wvs3qg" path="res://frog_walk.png" id="7_f84eh"]
 [ext_resource type="Texture2D" uid="uid://gucaq8gq84vv" path="res://frog_walk_3.png" id="8_21qqt"]
 [ext_resource type="Texture2D" uid="uid://qyiyidn84y6p" path="res://frog_walk_2.png" id="8_oblk4"]
+[ext_resource type="Script" path="res://Scripts/Frog.gd" id="10_i3gmu"]
+[ext_resource type="Script" path="res://Scripts/Lizard.gd" id="11_8l7j5"]
+[ext_resource type="Script" path="res://Scripts/Snake.gd" id="12_jrqpw"]
+[ext_resource type="Script" path="res://Scripts/Goose.gd" id="13_nwn1l"]
+[ext_resource type="Script" path="res://Scripts/Platypus.gd" id="14_rk77x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57bci"]
 atlas = ExtResource("2_q0cxm")
@@ -236,4 +241,25 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_qwy8o")
 animation = &"Walk"
 
+[node name="Frog" type="Node2D" parent="."]
+script = ExtResource("10_i3gmu")
+
+[node name="Lizard" type="Node2D" parent="."]
+position = Vector2(150, 318)
+script = ExtResource("11_8l7j5")
+
+[node name="Snake" type="Node2D" parent="."]
+script = ExtResource("12_jrqpw")
+
+[node name="Goose" type="Node2D" parent="."]
+script = ExtResource("13_nwn1l")
+
+[node name="Platypus" type="Node2D" parent="."]
+script = ExtResource("14_rk77x")
+
+[connection signal="set_active_character" from="." to="Frog" method="_on_player_set_active_character"]
+[connection signal="set_active_character" from="." to="Lizard" method="_on_player_set_active_character"]
+[connection signal="set_active_character" from="." to="Snake" method="_on_player_set_active_character"]
+[connection signal="set_active_character" from="." to="Goose" method="_on_player_set_active_character"]
+[connection signal="set_active_character" from="." to="Platypus" method="_on_player_set_active_character"]
 [connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]

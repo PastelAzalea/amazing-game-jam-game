@@ -11,7 +11,7 @@ var double_jump = false
 var jump_count : int = 2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player = $"../Player"
+	player = $".."
 
 
 # <-- Player Movement Code -->
