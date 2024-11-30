@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://w7m6tehvvy3g"]
+[gd_scene load_steps=30 format=3 uid="uid://w7m6tehvvy3g"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qt7d6"]
 [ext_resource type="Texture2D" uid="uid://cbss87b7xk5lc" path="res://Assets/Spritesheet/platformerPack_character.png" id="2_q0cxm"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://Scripts/Snake.gd" id="12_jrqpw"]
 [ext_resource type="Script" path="res://Scripts/Goose.gd" id="13_nwn1l"]
 [ext_resource type="Script" path="res://Scripts/Platypus.gd" id="14_rk77x"]
+[ext_resource type="Texture2D" uid="uid://8tj2m670npwb" path="res://snake.png" id="15_cu1vv"]
+[ext_resource type="Texture2D" uid="uid://b77jy5tppo62w" path="res://snake_flip.png" id="16_fjtxq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57bci"]
 atlas = ExtResource("2_q0cxm")
@@ -171,7 +173,64 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_tc1x8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_cu1vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cu1vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cu1vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fjtxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cu1vv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_fjtxq")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_cu1vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cu1vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fjtxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fjtxq")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_cu1vv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_qt7d6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -227,16 +286,18 @@ scale_amount_curve = SubResource("Curve_m2jh0")
 color_ramp = SubResource("Gradient_3gc37")
 
 [node name="LizardSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.17, 0.17)
 sprite_frames = SubResource("SpriteFrames_2toul")
 animation = &"Idle"
 
 [node name="GooseSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-16, -15)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_vkykb")
 animation = &"Walk"
 
 [node name="FrogSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(25, -27)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_qwy8o")
 animation = &"Walk"
@@ -256,6 +317,12 @@ script = ExtResource("13_nwn1l")
 
 [node name="Platypus" type="Node2D" parent="."]
 script = ExtResource("14_rk77x")
+
+[node name="SnakeSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -414)
+scale = Vector2(0.210417, 1.35556)
+sprite_frames = SubResource("SpriteFrames_tc1x8")
+animation = &"Jump"
 
 [connection signal="set_active_character" from="." to="Frog" method="_on_player_set_active_character"]
 [connection signal="set_active_character" from="." to="Lizard" method="_on_player_set_active_character"]
