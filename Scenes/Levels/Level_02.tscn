@@ -1,8 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjb3dx2x4bocm"]
+[gd_scene load_steps=23 format=3 uid="uid://bjb3dx2x4bocm"]
 
-[ext_resource type="Texture2D" uid="uid://cqfa0sc5cpp7i" path="res://Assets/gamejamgameBACKGROUND.png" id="1_8wf2h"]
+[ext_resource type="Texture2D" uid="uid://m02jybrq3que" path="res://Assets/gamejamgameBACKGROUND_level_2.png" id="1_k5tbh"]
 [ext_resource type="PackedScene" uid="uid://w7m6tehvvy3g" path="res://Scenes/Prefabs/player.tscn" id="2_lpo2y"]
-[ext_resource type="PackedScene" uid="uid://bfmh3fm2de78o" path="res://Scenes/Prefabs/Coin.tscn" id="3_nht2m"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="4_ndpt4"]
 [ext_resource type="Texture2D" uid="uid://jaegp53ccc7w" path="res://Assets/Spritesheet/platformPack_tilesheet.png" id="5_8107p"]
 [ext_resource type="Texture2D" uid="uid://b81j5idl3uhpu" path="res://Assets/Spritesheet/platformPack_custom_tilesheet.png" id="6_b1cwa"]
@@ -11,9 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cyti38f0lagf2" path="res://Scenes/Prefabs/LevelFinishDoor.tscn" id="8_8q1p6"]
 [ext_resource type="FontFile" uid="uid://qgc4vi5osk7v" path="res://Assets/Fonts/Star Choco.ttf" id="8_doswy"]
 [ext_resource type="PackedScene" uid="uid://405kt1jx0nq4" path="res://Scenes/Levels/Level_03.tscn" id="9_4kyh7"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_k81ec"]
-font_size = 33
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jaain"]
 texture = ExtResource("5_8107p")
@@ -213,9 +209,9 @@ sources/1 = SubResource("TileSetAtlasSource_dur45")
 [node name="Level_02" type="Node2D"]
 
 [node name="GamejamgameBackground" type="Sprite2D" parent="."]
-position = Vector2(2186, 1063)
-scale = Vector2(2, 2)
-texture = ExtResource("1_8wf2h")
+position = Vector2(2254, -62.9999)
+scale = Vector2(1.93677, 1.27788)
+texture = ExtResource("1_k5tbh")
 
 [node name="Player" parent="." instance=ExtResource("2_lpo2y")]
 z_index = 1
@@ -237,17 +233,6 @@ drag_bottom_margin = 0.4
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Coins" type="Node2D" parent="."]
-
-[node name="Coin" parent="Coins" instance=ExtResource("3_nht2m")]
-position = Vector2(696, 416)
-
-[node name="Coin2" parent="Coins" instance=ExtResource("3_nht2m")]
-position = Vector2(864, 353)
-
-[node name="Coin3" parent="Coins" instance=ExtResource("3_nht2m")]
-position = Vector2(1024, 416)
-
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("4_ndpt4")
 
@@ -268,18 +253,16 @@ text = "It can also climb up
 horizontal_alignment = 1
 
 [node name="Credits2" type="Label" parent="TutorialText"]
-offset_left = 2914.0
-offset_top = -105.0
-offset_right = 3192.0
-offset_bottom = 21.0
+offset_left = 361.0
+offset_top = 93.0
+offset_right = 1136.0
+offset_bottom = 219.0
 theme_override_colors/font_color = Color(0.910156, 0.730469, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("8_doswy")
 theme_override_font_sizes/font_size = 32
-text = "2D PLATFORMER
-STARTER KIT BY
-G2P STUDIOS"
+text = "The Gecko can run over water for small distances"
 horizontal_alignment = 1
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
@@ -302,6 +285,7 @@ offset_bottom = 40.0
 
 [node name="ScoreTexture" type="TextureRect" parent="UserInterface/GameUI/Score"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -312,6 +296,7 @@ stretch_mode = 4
 
 [node name="ScoreLabel" type="Label" parent="UserInterface/GameUI/Score"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 104.0
 offset_top = 42.0
@@ -327,16 +312,6 @@ text = "x 3"
 [node name="LevelFinishDoor" parent="." instance=ExtResource("8_8q1p6")]
 position = Vector2(4142, 145)
 next_scene = ExtResource("9_4kyh7")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 374.0
-offset_top = 93.0
-offset_right = 872.0
-offset_bottom = 376.0
-text = "The Gecko can run over water for small distances
-"
-label_settings = SubResource("LabelSettings_k81ec")
-autowrap_mode = 2
 
 [node name="Level2" type="Node2D" parent="."]
 
