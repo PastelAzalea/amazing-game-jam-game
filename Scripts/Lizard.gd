@@ -2,6 +2,7 @@ extends Node2D
 var player = null
 var active = false
 var is_in_water = false
+var is_in_tree = false
 @export_category("Lizard Properties") # You can tweak these changes according to your likings
 @export var move_speed : float = 1400
 @export var jump_force : float = 600
@@ -36,7 +37,10 @@ func movement(delta):
 	
 	# Move Player
 	var inputAxis = Input.get_axis("Left", "Right")
-	player.velocity = Vector2(inputAxis * move_speed, player.velocity.y)
+	if !is_in_tree:
+		player.velocity = Vector2(inputAxis * move_speed, player.velocity.y)
+	else:
+		player.velocity = Vector2(0, -inputAxis * move_speed)
 	player.move_and_slide()
 
 # Handles jumping functionality (double jump or single jump, can be toggled from inspector)
@@ -71,6 +75,23 @@ func _on_player_set_in_water_flag(player_is_in_water):
 		player.velocity.y = 0
 		move_speed = 700
 	else:
+		move_speed = 1400
+		gravity = 30
+		jump_force = 600
+		water_duration = 1
+
+
+func _on_player_set_in_tree_flag(player_is_in_tree: Variant) -> void:
+	if !active:
+		return
+	is_in_tree = player_is_in_tree
+	print("does this work")
+	if is_in_tree:
+		player.rotation = -90.0
+		player.velocity.y = 0
+		move_speed = 700
+	else:
+		player.rotation = 0
 		move_speed = 1400
 		gravity = 30
 		jump_force = 600
