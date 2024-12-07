@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://cbss87b7xk5lc" path="res://Assets/Spritesheet/platformerPack_character.png" id="2_q0cxm"]
 [ext_resource type="Texture2D" uid="uid://dxp77wq60c2rr" path="res://Assets/Textures/CloudTexture.png" id="3_8vxmb"]
 [ext_resource type="Texture2D" uid="uid://cj27wjdu77qod" path="res://Assets/Spritesheet/Lizard.png" id="4_eckce"]
-[ext_resource type="Texture2D" uid="uid://dyf3007fjxe8k" path="res://Goose.png" id="5_swi4g"]
-[ext_resource type="Texture2D" uid="uid://d1dfny3mtkqvb" path="res://frog.png" id="6_14axh"]
-[ext_resource type="Texture2D" uid="uid://1a74q2wvs3qg" path="res://frog_walk.png" id="7_f84eh"]
-[ext_resource type="Texture2D" uid="uid://gucaq8gq84vv" path="res://frog_walk_3.png" id="8_21qqt"]
-[ext_resource type="Texture2D" uid="uid://qyiyidn84y6p" path="res://frog_walk_2.png" id="8_oblk4"]
+[ext_resource type="Texture2D" uid="uid://ctcedwm2mfrjr" path="res://Assets/Spritesheet/Goose.png" id="6_uhili"]
+[ext_resource type="Texture2D" uid="uid://dw2nlmril4kwx" path="res://Assets/Spritesheet/frog.png" id="8_31x6k"]
+[ext_resource type="Texture2D" uid="uid://dkldik88xuo80" path="res://Assets/Spritesheet/frog_walk.png" id="9_lib7x"]
 [ext_resource type="Script" path="res://Scripts/Frog.gd" id="10_i3gmu"]
+[ext_resource type="Texture2D" uid="uid://5fjbv3nnqqy0" path="res://Assets/Spritesheet/frog_walk_2.png" id="10_jhe7h"]
+[ext_resource type="Texture2D" uid="uid://b1nnf73ebaq3s" path="res://Assets/Spritesheet/frog_walk_3.png" id="11_6u52i"]
 [ext_resource type="Script" path="res://Scripts/Lizard.gd" id="11_8l7j5"]
 [ext_resource type="Script" path="res://Scripts/Snake.gd" id="12_jrqpw"]
 [ext_resource type="Script" path="res://Scripts/Goose.gd" id="13_nwn1l"]
 [ext_resource type="Script" path="res://Scripts/Platypus.gd" id="14_rk77x"]
-[ext_resource type="Texture2D" uid="uid://8tj2m670npwb" path="res://snake.png" id="15_cu1vv"]
-[ext_resource type="Texture2D" uid="uid://b77jy5tppo62w" path="res://snake_flip.png" id="16_fjtxq"]
+[ext_resource type="Texture2D" uid="uid://bvxsf7eu467c" path="res://Assets/Spritesheet/snake.png" id="15_gs2qk"]
+[ext_resource type="Texture2D" uid="uid://dfvk1fluolq0n" path="res://Assets/Spritesheet/snake_flip.png" id="16_h2wvj"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/WaterDetector.gd" id="17_y7bs1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57bci"]
@@ -110,7 +110,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_swi4g")
+"texture": ExtResource("6_uhili")
 }],
 "loop": true,
 "name": &"Idle",
@@ -118,7 +118,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_swi4g")
+"texture": ExtResource("6_uhili")
 }],
 "loop": true,
 "name": &"Jump",
@@ -126,7 +126,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_swi4g")
+"texture": ExtResource("6_uhili")
 }],
 "loop": true,
 "name": &"Walk",
@@ -137,7 +137,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_14axh")
+"texture": ExtResource("8_31x6k")
 }],
 "loop": true,
 "name": &"Idle",
@@ -145,7 +145,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_f84eh")
+"texture": ExtResource("9_lib7x")
 }],
 "loop": true,
 "name": &"Jump",
@@ -153,24 +153,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_14axh")
+"texture": ExtResource("8_31x6k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_21qqt")
+"texture": ExtResource("9_lib7x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_oblk4")
+"texture": ExtResource("10_jhe7h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_f84eh")
+"texture": ExtResource("11_6u52i")
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"default",
 "speed": 5.0
 }]
 
@@ -178,19 +173,16 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_cu1vv")
+"texture": ExtResource("15_gs2qk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_cu1vv")
+"texture": ExtResource("15_gs2qk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_cu1vv")
+"texture": ExtResource("15_gs2qk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_fjtxq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_cu1vv")
+"texture": ExtResource("16_h2wvj")
 }],
 "loop": true,
 "name": &"Idle",
@@ -198,7 +190,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_fjtxq")
+"texture": ExtResource("15_gs2qk")
 }],
 "loop": true,
 "name": &"Jump",
@@ -206,27 +198,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_cu1vv")
+"texture": ExtResource("15_gs2qk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_cu1vv")
+"texture": ExtResource("15_gs2qk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_fjtxq")
+"texture": ExtResource("16_h2wvj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_fjtxq")
+"texture": ExtResource("16_h2wvj")
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_cu1vv")
-}],
-"loop": true,
-"name": &"default",
 "speed": 5.0
 }]
 
@@ -299,13 +283,13 @@ animation = &"Idle"
 position = Vector2(-16, -15)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_vkykb")
-animation = &"Walk"
+animation = &"Idle"
 
 [node name="FrogSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -25.725)
 scale = Vector2(0.3, 0.291527)
 sprite_frames = SubResource("SpriteFrames_qwy8o")
-animation = &"Walk"
+animation = &"Idle"
 
 [node name="Frog" type="Node2D" parent="."]
 script = ExtResource("10_i3gmu")
@@ -327,7 +311,7 @@ script = ExtResource("14_rk77x")
 position = Vector2(8, -414)
 scale = Vector2(0.210417, 1.35556)
 sprite_frames = SubResource("SpriteFrames_tc1x8")
-animation = &"Jump"
+animation = &"Walk"
 
 [node name="Node2D" type="Node2D" parent="."]
 
