@@ -30,6 +30,9 @@ var is_grounded : bool = false
 @onready var death_particles = $DeathParticles
 
 # --------- BUILT-IN FUNCTIONS ---------- #
+func _ready():
+	set_sprite()
+	
 
 func _process(_delta):
 	# Calling functions
@@ -38,6 +41,18 @@ func _process(_delta):
 	flip_player()
 	
 # --------- CUSTOM FUNCTIONS ---------- #
+func set_sprite():
+	match active_character:
+		"lizard": player_sprite = $LizardSprite2D
+		"goose": player_sprite = $GooseSprite2D
+		"frog": player_sprite = $FrogSprite2D
+		"snake": player_sprite = $SnakeSprite2D
+		_: player_sprite = $AnimatedSprite2D
+	set_active_character.emit(active_character)
+	var allsprites =[$LizardSprite2D,$AnimatedSprite2D,$GooseSprite2D, $FrogSprite2D, $SnakeSprite2D]
+	for sprite in allsprites:
+		sprite.visible = sprite==player_sprite
+
 func set_active_animal():
 	var current_character = active_character
 	for key in character_keys:
@@ -45,15 +60,7 @@ func set_active_animal():
 		if Input.is_key_pressed(key):
 			active_character = character
 	if current_character != active_character:
-		match active_character:
-			"lizard": player_sprite = $LizardSprite2D
-			"goose": player_sprite = $GooseSprite2D
-			"frog": player_sprite = $FrogSprite2D
-			_: player_sprite = $AnimatedSprite2D
-	set_active_character.emit(active_character)
-	var allsprites =[$LizardSprite2D,$AnimatedSprite2D,$GooseSprite2D, $FrogSprite2D]
-	for sprite in allsprites:
-		sprite.visible = sprite==player_sprite
+		set_sprite()
 
 # Handles jumping functionality (double jump or single jump, can be toggled from inspector)
 func handle_jumping():

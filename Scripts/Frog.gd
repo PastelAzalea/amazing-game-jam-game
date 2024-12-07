@@ -62,6 +62,7 @@ func jump():
 	player.velocity.y = -(jump_force + min(current_jump_step, max_jump_step))
 	current_jump_step = 0
 	move_speed = 400
+	player.scale = Vector2(1, 1)
 
 # --------- SIGNALS ---------- #
 
