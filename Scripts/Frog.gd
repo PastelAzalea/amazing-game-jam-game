@@ -3,13 +3,15 @@ extends Node2D
 var player = null
 var active = false
 
+var is_in_water = false
+
 @export_category("Frog Properties") # You can tweak these changes according to your likings
 @export var move_speed : float = 400
 @export var jump_force : float = 600
 @export var gravity : float = 30
 @export var max_jump_count : int = 2
 
-var jump_step = 500
+var jump_step = 1400
 var current_jump_step = 0
 var max_jump_step = 700
 
@@ -51,11 +53,8 @@ func handle_jumping(delta):
 		current_jump_step += delta*jump_step
 		move_speed = 0
 	elif current_jump_step > 0:
-		if player.is_on_floor() and !double_jump:
+		if player.is_on_floor() or is_in_water:
 			jump()
-		elif double_jump and jump_count > 0:
-			jump()
-			jump_count -= 1
 
 # Player jump
 func jump():
@@ -68,3 +67,15 @@ func jump():
 
 func _on_player_set_active_character(kind):
 	active = kind == "frog"
+
+func _on_player_set_in_water_flag(player_is_in_water):
+	is_in_water = player_is_in_water
+	if is_in_water:
+		gravity = 2
+		player.velocity.y /= 2
+		jump_force = 100
+		max_jump_step = 100
+	else:
+		gravity = 30
+		jump_force = 600
+		max_jump_step = 700
