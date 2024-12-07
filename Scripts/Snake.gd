@@ -6,7 +6,7 @@ var active = true
 
 @export_category("Snake Properties") # You can tweak these changes according to your likings
 @export var move_speed : float = 400
-@export var jump_force : float = 600
+@export var jump_force : float = 0
 @export var gravity : float = 30
 @export var max_jump_count : int = 0
 var double_jump = false
@@ -55,7 +55,8 @@ func _process(delta: float) -> void:
 	movement()
 
 func _on_player_set_active_character(kind):
-	active = kind == "snake"
-	if !active:
+	if active and kind != "snake":
 		player.scale = Vector2(1,1)
-		player.position.y += 0.3
+		player.position.y -= 40
+	active = kind == "snake"
+	
