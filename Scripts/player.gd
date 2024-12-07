@@ -10,6 +10,8 @@ var character_keys = {
 	KEY_5: "goose",
 }
 
+signal set_in_water_flag(player_is_in_water)
+
 # --------- VARIABLES ---------- #
 
 @export_category("Player Properties") # You can tweak these changes according to your likings
@@ -103,7 +105,9 @@ func death_tween():
 	tween.tween_property(self, "scale", Vector2.ZERO, 0.15)
 	await tween.finished
 	global_position = spawn_point.global_position
+	self.velocity = Vector2(0,0)
 	await get_tree().create_timer(0.3).timeout
+	self.position.y += -100
 	AudioManager.respawn_sfx.play()
 	respawn_tween()
 
@@ -125,3 +129,10 @@ func _on_collision_body_entered(_body):
 		AudioManager.death_sfx.play()
 		death_particles.emitting = true
 		death_tween()
+
+
+func _on_area_2d_body_entered(body):
+	set_in_water_flag.emit(true)
+
+func _on_area_2d_body_exited(body):
+	set_in_water_flag.emit(false)

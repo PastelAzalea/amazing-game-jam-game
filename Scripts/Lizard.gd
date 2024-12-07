@@ -1,7 +1,7 @@
 extends Node2D
 var player = null
 var active = false
-
+var is_in_water = false
 @export_category("Lizard Properties") # You can tweak these changes according to your likings
 @export var move_speed : float = 1400
 @export var jump_force : float = 600
@@ -9,16 +9,23 @@ var active = false
 @export var max_jump_count : int = 2
 var double_jump = false
 var jump_count : int = 2
+var water_duration = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = $".."
 
 
 # <-- Player Movement Code -->
-func movement():
-	
+func movement(delta):
 	if !active:
 		return
+	if is_in_water:
+		water_duration -= delta
+		if water_duration < 0:
+			player.death_tween()
+			water_duration = 1
+			is_in_water = false
+			
 	# Gravity
 	if !player.is_on_floor():
 		player.velocity.y += gravity
@@ -51,7 +58,20 @@ func jump():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	movement()
+	movement(delta)
 
 func _on_player_set_active_character(kind):
 	active = kind == "lizard"
+
+
+func _on_player_set_in_water_flag(player_is_in_water):
+	is_in_water = player_is_in_water
+	if is_in_water:
+		gravity = 0.1
+		player.velocity.y = 0
+		move_speed = 700
+	else:
+		move_speed = 1400
+		gravity = 30
+		jump_force = 600
+		water_duration = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://w7m6tehvvy3g"]
+[gd_scene load_steps=32 format=3 uid="uid://w7m6tehvvy3g"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qt7d6"]
 [ext_resource type="Texture2D" uid="uid://cbss87b7xk5lc" path="res://Assets/Spritesheet/platformerPack_character.png" id="2_q0cxm"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/Platypus.gd" id="14_rk77x"]
 [ext_resource type="Texture2D" uid="uid://8tj2m670npwb" path="res://snake.png" id="15_cu1vv"]
 [ext_resource type="Texture2D" uid="uid://b77jy5tppo62w" path="res://snake_flip.png" id="16_fjtxq"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/WaterDetector.gd" id="17_y7bs1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57bci"]
 atlas = ExtResource("2_q0cxm")
@@ -68,7 +69,7 @@ radius = 27.0
 height = 66.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvbjh"]
-size = Vector2(58, 69)
+size = Vector2(94, 69)
 
 [sub_resource type="Curve" id="Curve_m2jh0"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246032, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -229,7 +230,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_aeh2k"]
+radius = 52.63
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(3, 0)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_qt7d6")
 
@@ -244,7 +249,7 @@ shape = SubResource("CapsuleShape2D_n4sts")
 [node name="Collision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
-position = Vector2(0, 14.5)
+position = Vector2(1, 14.5)
 shape = SubResource("RectangleShape2D_tvbjh")
 
 [node name="ParticleTrails" type="CPUParticles2D" parent="."]
@@ -297,8 +302,8 @@ sprite_frames = SubResource("SpriteFrames_vkykb")
 animation = &"Walk"
 
 [node name="FrogSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(25, -27)
-scale = Vector2(0.3, 0.3)
+position = Vector2(0, -25.725)
+scale = Vector2(0.3, 0.291527)
 sprite_frames = SubResource("SpriteFrames_qwy8o")
 animation = &"Walk"
 
@@ -324,9 +329,25 @@ scale = Vector2(0.210417, 1.35556)
 sprite_frames = SubResource("SpriteFrames_tc1x8")
 animation = &"Jump"
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("17_y7bs1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2(26, 8)
+shape = SubResource("CircleShape2D_aeh2k")
+one_way_collision_margin = 0.0
+
 [connection signal="set_active_character" from="." to="Frog" method="_on_player_set_active_character"]
 [connection signal="set_active_character" from="." to="Lizard" method="_on_player_set_active_character"]
 [connection signal="set_active_character" from="." to="Snake" method="_on_player_set_active_character"]
 [connection signal="set_active_character" from="." to="Goose" method="_on_player_set_active_character"]
 [connection signal="set_active_character" from="." to="Platypus" method="_on_player_set_active_character"]
+[connection signal="set_in_water_flag" from="." to="Frog" method="_on_player_set_in_water_flag"]
+[connection signal="set_in_water_flag" from="." to="Lizard" method="_on_player_set_in_water_flag"]
 [connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
+[connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Node2D/Area2D" to="." method="_on_area_2d_body_exited"]
