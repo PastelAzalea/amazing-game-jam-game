@@ -11,7 +11,7 @@ var character_keys = {
 }
 
 signal set_in_water_flag(player_is_in_water)
-
+signal set_in_tree_flag(player_is_in_tree)
 # --------- VARIABLES ---------- #
 
 @export_category("Player Properties") # You can tweak these changes according to your likings
@@ -131,8 +131,14 @@ func _on_collision_body_entered(_body):
 		death_tween()
 
 
-func _on_area_2d_body_entered(body):
-	set_in_water_flag.emit(true)
+func _on_area_2d_body_entered(_body):
+	if _body.is_in_group("Water"):
+		set_in_water_flag.emit(true)
+	if _body.is_in_group("Trees"):
+		set_in_tree_flag.emit(true)
 
-func _on_area_2d_body_exited(body):
-	set_in_water_flag.emit(false)
+func _on_area_2d_body_exited(_body):
+	if _body.is_in_group("Water"):
+		set_in_water_flag.emit(false)
+	if _body.is_in_group("Trees"):
+		set_in_tree_flag.emit(false)
