@@ -1,9 +1,9 @@
-res://Scenes/Levels/Level_01.tscn::bd488fdf083c64543990752d5ef2f060::1733595557::res://.godot/exported/133200997/export-86e3b7f09a70caf62d5231584dc34433-Level_01.scn
-res://Scenes/Levels/Level_02.tscn::9036bc57b2005fa954ed325262e3dc28::1733595557::res://.godot/exported/133200997/export-88a52084acc6a73798bc404ab5a93ef1-Level_02.scn
+res://Scenes/Levels/Level_01.tscn::d02cdbb3f948cb2667fc23c7a742b68c::1733596163::res://.godot/exported/133200997/export-86e3b7f09a70caf62d5231584dc34433-Level_01.scn
+res://Scenes/Levels/Level_02.tscn::be07f79b5b77a38a1ab2c327e197c6ab::1733596152::res://.godot/exported/133200997/export-88a52084acc6a73798bc404ab5a93ef1-Level_02.scn
 res://Scenes/Managers/AudioManager.tscn::8c28d3b009b45e7a50342a11814c7522::1733582222::res://.godot/exported/133200997/export-3e8f9adf23e4f39f5ef9b75ee3903e55-AudioManager.scn
 res://Scenes/Managers/SceneTransition.tscn::a5de570d2ed6e114ab988c5959849a03::1733582222::res://.godot/exported/133200997/export-bc6bae547a6390b05fcf3a2389a48f7d-SceneTransition.scn
 res://Scenes/Prefabs/Coin.tscn::a6cce0004e9739d6ca953685f9cf62a9::1733582222::res://.godot/exported/133200997/export-ac5ed41dfc0626a6addabdf95743897a-Coin.scn
 res://Scenes/Prefabs/LevelFinishDoor.tscn::683dce5d1cb3f72050e74356334de3cf::1733582222::res://.godot/exported/133200997/export-b992852d889096939653c5cd596fc8bd-LevelFinishDoor.scn
-res://Scenes/Prefabs/player.tscn::2d5ebeddcecf02a7d5d5e41f9411f396::1733595715::res://.godot/exported/133200997/export-4e8c3ac095851cd7f9b0c2ba6b10aaf9-player.scn
+res://Scenes/Prefabs/player.tscn::2d5ebeddcecf02a7d5d5e41f9411f396::1733596152::res://.godot/exported/133200997/export-4e8c3ac095851cd7f9b0c2ba6b10aaf9-player.scn
 res://default_env.tres::3ec497ca29735e87a36350648b7a0207::1733582222::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
 res://Scenes/Levels/Level_03.tscn::813f8603755558712bdfb4ee07a1d46c::1733595232::res://.godot/exported/133200997/export-4cc38a9e54f4261cb18d409ae8a5e3ee-Level_03.scn
