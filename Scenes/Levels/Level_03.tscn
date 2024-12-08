@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://405kt1jx0nq4"]
+[gd_scene load_steps=11 format=3 uid="uid://405kt1jx0nq4"]
 
 [ext_resource type="PackedScene" uid="uid://w7m6tehvvy3g" path="res://Scenes/Prefabs/player.tscn" id="1_g8nbs"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_1gnl5"]
@@ -39,9 +39,6 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rndpx")
-
-[sub_resource type="LabelSettings" id="LabelSettings_k81ec"]
-font_size = 33
 
 [node name="Level_02" type="Node2D"]
 
@@ -93,28 +90,46 @@ position = Vector2(232, 328)
 [node name="TutorialText" type="Node2D" parent="."]
 
 [node name="Credits" type="Label" parent="TutorialText"]
-offset_left = 1416.0
-offset_top = 256.0
-offset_right = 1694.0
-offset_bottom = 382.0
+offset_left = -9.0
+offset_top = 131.0
+offset_right = 395.0
+offset_bottom = 257.0
 theme_override_colors/font_color = Color(0.910156, 0.730469, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("5_4gwp1")
 theme_override_font_sizes/font_size = 32
-text = "2D PLATFORMER
-STARTER KIT BY
-G2P STUDIOS"
+text = "The goose can fly! 
+but shes trans and doesnt 
+like the water ^^' "
+horizontal_alignment = 1
+
+[node name="Credits2" type="Label" parent="TutorialText"]
+offset_left = 738.0
+offset_top = -344.0
+offset_right = 1016.0
+offset_bottom = -218.0
+theme_override_colors/font_color = Color(0.910156, 0.730469, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_4gwp1")
+theme_override_font_sizes/font_size = 32
+text = "She doesn't get tired but 
+maneuvering might be tricky"
+horizontal_alignment = 1
+
+[node name="Credits3" type="Label" parent="TutorialText"]
+offset_left = 3498.0
+offset_top = -927.0
+offset_right = 4245.0
+offset_bottom = -801.0
+theme_override_colors/font_color = Color(0.910156, 0.730469, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_4gwp1")
+theme_override_font_sizes/font_size = 32
+text = "Have you seen nice swim suits for geese lately?"
 horizontal_alignment = 1
 
 [node name="LevelFinishDoor" parent="." instance=ExtResource("8_1j5ha")]
-position = Vector2(3523, 589)
-
-[node name="Label" type="Label" parent="."]
-offset_left = 222.0
-offset_top = 45.0
-offset_right = 720.0
-offset_bottom = 328.0
-text = "The goose can fly! but shes trans and doesnt like the water ^^' "
-label_settings = SubResource("LabelSettings_k81ec")
-autowrap_mode = 2
+position = Vector2(3144, -441)

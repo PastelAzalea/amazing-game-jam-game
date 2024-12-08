@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 # <-- Player Movement Code -->
-func movement():
+func movement(delta):
 	# Gravity
 	if !player.is_on_floor():
 		player.velocity.y += gravity
@@ -27,30 +27,49 @@ func movement():
 	handle_jumping()
 	
 	# Move Player
-	var inputAxis = Input.get_axis("Left", "Right")
-	player.velocity = Vector2(inputAxis * move_speed, player.velocity.y)
+	if player.is_on_floor():
+		var inputAxis = Input.get_axis("Left", "Right")
+		player.velocity = Vector2(inputAxis * move_speed, player.velocity.y)
+	else:
+		var inputAxis = Input.get_axis("Left", "Right")
+		player.velocity = Vector2(inputAxis * move_speed * 0.5, player.velocity.y)
+		# I actually had AI code proper Air resistance for me for this bird. Feels somehow very cool to play
+		# I wish though we could set terminal velocity and time to that velocity directly. My physics is very rusty on this and I am lazy right now
+		# And lastly the drag force enables some gliding mechanic that I didnt manage to  make realistic also because of lacking physics i guess
+		# Calculate the drag force (F_d)
+		var drag_force_magnitude = 0.5 * 1.2 * 0.5 * 0.05 * player.velocity.length() * player.velocity.length()
+		# Calculate the drag force vector (opposite to velocity)
+		var drag_force = player.velocity.normalized() * -drag_force_magnitude
+		# Apply the drag force (Newton's second law: F = ma)
+		var mass = 2
+		var acceleration = drag_force / mass
+		player.velocity += acceleration * delta 
+		
+		
 	player.move_and_slide()
 
 # Handles jumping functionality (double jump or single jump, can be toggled from inspector)
 func handle_jumping():
 	if Input.is_action_just_pressed("Jump"):
-		if player.is_on_floor() and !double_jump:
-			jump()
-		elif double_jump and jump_count > 0:
-			jump()
-			jump_count -= 1
+		jump()
 
 # Player jump
 func jump():
 	player.jump_tween()
 	AudioManager.jump_sfx.play()
 	player.velocity.y = -jump_force
+	var inputAxis = Input.get_axis("Left", "Right")
+	player.velocity += Vector2(inputAxis * move_speed * 0.5, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if !active:
 		return
-	movement()
+	movement(delta)
 
 func _on_player_set_active_character(kind):
 	active = kind == "goose"
+
+
+func _on_player_set_in_water_flag(player_is_in_water: Variant) -> void:
+	player.death_tween()

@@ -333,6 +333,7 @@ one_way_collision_margin = 0.0
 [connection signal="set_in_tree_flag" from="." to="Lizard" method="_on_player_set_in_tree_flag"]
 [connection signal="set_in_water_flag" from="." to="Frog" method="_on_player_set_in_water_flag"]
 [connection signal="set_in_water_flag" from="." to="Lizard" method="_on_player_set_in_water_flag"]
+[connection signal="set_in_water_flag" from="." to="Goose" method="_on_player_set_in_water_flag"]
 [connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
 [connection signal="body_entered" from="AreaDetector/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="AreaDetector/Area2D" to="." method="_on_area_2d_body_exited"]

@@ -249,7 +249,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("8_doswy")
 theme_override_font_sizes/font_size = 32
-text = "It can also climb up
+text = "They can also climb up
  trees and suitable walls"
 horizontal_alignment = 1
 
