@@ -92,9 +92,8 @@ size = Vector2(683.584, 128.808)
 [node name="Level_01" type="Node2D"]
 
 [node name="Gamebackgrounhd" type="Sprite2D" parent="."]
-position = Vector2(1149, 1698)
-rotation = 0.125664
-scale = Vector2(2.89347, 2.8437)
+position = Vector2(1849, 1834)
+scale = Vector2(3.2, 3.2)
 texture = ExtResource("1_kb2ms")
 
 [node name="LevelFinishDoor" parent="." instance=ExtResource("1_oqkjg")]

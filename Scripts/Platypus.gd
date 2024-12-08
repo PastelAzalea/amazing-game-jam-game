@@ -52,7 +52,7 @@ func jump():
 	player.velocity.y = -jump_force
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	movement()
 
 func _on_player_set_active_character(kind):

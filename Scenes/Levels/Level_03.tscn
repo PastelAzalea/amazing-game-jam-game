@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://405kt1jx0nq4"]
+[gd_scene load_steps=12 format=3 uid="uid://405kt1jx0nq4"]
 
 [ext_resource type="PackedScene" uid="uid://w7m6tehvvy3g" path="res://Scenes/Prefabs/player.tscn" id="1_g8nbs"]
-[ext_resource type="PackedScene" uid="uid://bfmh3fm2de78o" path="res://Scenes/Prefabs/Coin.tscn" id="2_70tgv"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="3_1gnl5"]
 [ext_resource type="Texture2D" uid="uid://jaegp53ccc7w" path="res://Assets/Spritesheet/platformPack_tilesheet.png" id="4_88j3v"]
 [ext_resource type="FontFile" uid="uid://qgc4vi5osk7v" path="res://Assets/Fonts/Star Choco.ttf" id="5_4gwp1"]
-[ext_resource type="Script" path="res://Scripts/GameUI.gd" id="6_wbfs8"]
-[ext_resource type="Texture2D" uid="uid://clreg520jah1j" path="res://Assets/platformPack_item008.png" id="7_3fg05"]
+[ext_resource type="Texture2D" uid="uid://cqfa0sc5cpp7i" path="res://Assets/gamejamgameBACKGROUND.png" id="5_tx00h"]
 [ext_resource type="PackedScene" uid="uid://cyti38f0lagf2" path="res://Scenes/Prefabs/LevelFinishDoor.tscn" id="8_1j5ha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gs0qk"]
@@ -47,6 +45,11 @@ font_size = 33
 
 [node name="Level_02" type="Node2D"]
 
+[node name="GamejamgameBackground" type="Sprite2D" parent="."]
+position = Vector2(1799, -76)
+scale = Vector2(3.40745, 3.52218)
+texture = ExtResource("5_tx00h")
+
 [node name="Player" parent="." instance=ExtResource("1_g8nbs")]
 z_index = 1
 position = Vector2(150, 318)
@@ -67,17 +70,6 @@ drag_right_margin = 0.4
 drag_bottom_margin = 0.4
 editor_draw_limits = true
 editor_draw_drag_margin = true
-
-[node name="Coins" type="Node2D" parent="."]
-
-[node name="Coin" parent="Coins" instance=ExtResource("2_70tgv")]
-position = Vector2(696, 416)
-
-[node name="Coin2" parent="Coins" instance=ExtResource("2_70tgv")]
-position = Vector2(864, 353)
-
-[node name="Coin3" parent="Coins" instance=ExtResource("2_70tgv")]
-position = Vector2(1024, 416)
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("3_1gnl5")
@@ -114,48 +106,6 @@ text = "2D PLATFORMER
 STARTER KIT BY
 G2P STUDIOS"
 horizontal_alignment = 1
-
-[node name="UserInterface" type="CanvasLayer" parent="."]
-
-[node name="GameUI" type="Control" parent="UserInterface"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_wbfs8")
-
-[node name="Score" type="Control" parent="UserInterface/GameUI"]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ScoreTexture" type="TextureRect" parent="UserInterface/GameUI/Score"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 116.0
-offset_bottom = 116.0
-texture = ExtResource("7_3fg05")
-stretch_mode = 4
-
-[node name="ScoreLabel" type="Label" parent="UserInterface/GameUI/Score"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 104.0
-offset_top = 42.0
-offset_right = 148.0
-offset_bottom = 84.0
-theme_override_colors/font_color = Color(0.910156, 0.730469, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("5_4gwp1")
-theme_override_font_sizes/font_size = 32
-text = "x 3"
 
 [node name="LevelFinishDoor" parent="." instance=ExtResource("8_1j5ha")]
 position = Vector2(3523, 589)

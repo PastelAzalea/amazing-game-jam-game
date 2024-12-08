@@ -85,7 +85,6 @@ func _on_player_set_in_tree_flag(player_is_in_tree: Variant) -> void:
 	if !active:
 		return
 	is_in_tree = player_is_in_tree
-	print("does this work")
 	if is_in_tree:
 		player.rotation = -90.0
 		player.velocity.y = 0

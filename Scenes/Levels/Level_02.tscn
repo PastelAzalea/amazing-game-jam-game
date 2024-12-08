@@ -108,6 +108,7 @@ texture_region_size = Vector2i(64, 64)
 4:2/0 = 0
 0:5/0 = 0
 2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-18.5, -6, 17, -16.5, 18, 32, -16, 32)
 0:6/0 = 0
 2:6/0 = 0
 
@@ -262,7 +263,8 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("8_doswy")
 theme_override_font_sizes/font_size = 32
-text = "The Gecko can run over water for small distances"
+text = "The Gecko can run over water for small distances
+Press [2] to switch to them!"
 horizontal_alignment = 1
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
@@ -328,6 +330,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(589892, 1, 5, 589893, 1, 5, 589894, 1, 5, 589895, 1, 5, 589896, 1, 5, 589897, 1, 5, 589898, 1, 5, 589899, 1, 5, 589900, 1, 5, 589901, 1, 5, 589902, 1, 5, 589903, 1, 5, 589904, 1, 5, 589905, 1, 5, 589906, 1, 5, 589907, 1, 5, 1769549, 1, 5, 1769550, 1, 5, 1769551, 1, 5, 1769552, 1, 5, 1769553, 1, 5, 1769554, 1, 5, 1769555, 1, 5, 1769556, 1, 5, 1769557, 1, 5, 1769558, 1, 5, 1769559, 1, 5, 1769560, 1, 5, 1769561, 1, 5, 1769562, 1, 5, 1769563, 1, 5, 1769564, 1, 5, 1769565, 1, 5, 1769566, 1, 5, 1769567, 1, 5, 1769568, 1, 5, 1769548, 1, 5, 1769547, 1, 5, 1769546, 1, 5, 1769545, 1, 5, 1769544, 1, 5)
 
 [node name="SpawnPoint" type="Marker2D" parent="Level2"]
+unique_name_in_owner = true
 position = Vector2(174, 383)
 
 [node name="Water" type="TileMap" parent="Level2" groups=["Water"]]
@@ -338,4 +341,4 @@ layer_0/tile_data = PackedInt32Array(458773, 262147, 0, 458776, 262147, 0, 45877
 [node name="Trees" type="TileMap" parent="Level2" groups=["Trees"]]
 tile_set = SubResource("TileSet_ky850")
 format = 2
-layer_0/tile_data = PackedInt32Array(393255, 393217, 1, 327719, 393217, 1, 262183, 393217, 1, 196647, 393217, 1, 131111, 393217, 1, 65575, 393217, 1, 393220, 393217, 1)
+layer_0/tile_data = PackedInt32Array(393255, 131072, 5, 327719, 131072, 5, 262183, 131072, 5, 196647, 131072, 5, 131111, 131072, 5, 65575, 131072, 5)

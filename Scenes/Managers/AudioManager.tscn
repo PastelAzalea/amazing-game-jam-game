@@ -1,30 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://bssjjygu83iwl"]
+[gd_scene load_steps=6 format=3 uid="uid://bssjjygu83iwl"]
 
 [ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_hp1cr"]
-[ext_resource type="AudioStream" uid="uid://cg4gxy6p2ktlc" path="res://Assets/Sound/FX/jump_sfx.sfxr" id="2_xt7p3"]
-[ext_resource type="AudioStream" uid="uid://vrusmhs8ok45" path="res://Assets/Sound/FX/coin_pickup_sfx.sfxr" id="3_31eto"]
-[ext_resource type="AudioStream" uid="uid://btybfha0k0vbf" path="res://Assets/Sound/FX/death_sfx.sfxr" id="4_0v7sa"]
-[ext_resource type="AudioStream" uid="uid://d31yym0r7wh7" path="res://Assets/Sound/FX/respawn_sfx.sfxr" id="5_7ngje"]
-[ext_resource type="AudioStream" uid="uid://bpwseyvsredie" path="res://Assets/Sound/FX/level_complete_sfx.sfxr" id="6_okxva"]
+[ext_resource type="AudioStream" uid="uid://c36nnwv4o7u0o" path="res://Assets/Sound/FX/jump.mp3" id="2_iglmi"]
+[ext_resource type="AudioStream" uid="uid://cyxnhlkvttla3" path="res://Assets/Sound/FX/lvl 1.1  loop .mp3" id="3_322dq"]
+[ext_resource type="AudioStream" uid="uid://ckdjbjc03j6xk" path="res://Assets/Sound/FX/death.mp3" id="3_tlm6b"]
+[ext_resource type="AudioStream" uid="uid://idjme4xw4rs6" path="res://Assets/Sound/FX/respawn.mp3" id="4_rq8yc"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_hp1cr")
 
 [node name="JumpSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_xt7p3")
+stream = ExtResource("2_iglmi")
 volume_db = 1.5
 
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_322dq")
+volume_db = -13.924
+autoplay = true
+parameters/looping = true
+
 [node name="CoinPickup" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_31eto")
 volume_db = 1.5
 
 [node name="DeathSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_0v7sa")
+stream = ExtResource("3_tlm6b")
+volume_db = -8.814
 
-[node name="RespawnSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_7ngje")
+[node name="RespawnSfxMUTED" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rq8yc")
+volume_db = -80.0
 
 [node name="LevelCompleteSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_okxva")
 volume_db = -2.0
 pitch_scale = 0.5

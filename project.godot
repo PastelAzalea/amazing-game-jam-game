@@ -16,7 +16,7 @@ run/main_scene="res://Scenes/Levels/Level_01.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.105882, 0.458824, 0.733333, 1)
 boot_splash/image="res://Assets/Splash/2D Platformer Starter Kit Splash.png"
-config/icon="res://Icon.png"
+config/icon="res://Icon_fullsize.png"
 
 [autoload]
 
