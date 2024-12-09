@@ -72,4 +72,5 @@ func _on_player_set_active_character(kind):
 
 
 func _on_player_set_in_water_flag(player_is_in_water: Variant) -> void:
-	player.death_tween()
+	if active:
+		player.death_tween()

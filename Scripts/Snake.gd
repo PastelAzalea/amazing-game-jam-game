@@ -6,7 +6,7 @@ var active = true
 
 @export_category("Snake Properties") # You can tweak these changes according to your likings
 @export var move_speed : float = 400
-@export var jump_force : float = 0
+@export var jump_force : float = 8
 @export var gravity : float = 30
 @export var max_jump_count : int = 0
 var double_jump = false
@@ -35,18 +35,13 @@ func movement():
 
 # Handles jumping functionality (double jump or single jump, can be toggled from inspector)
 func handle_jumping():
-	if Input.is_action_just_pressed("Jump"):
-		if player.is_on_floor() and !double_jump and  jump_count > 0:
-			jump()
-		elif double_jump and jump_count > 0:
-			jump()
-			jump_count -= 1
+	if Input.is_action_pressed("Jump"):
+		player.position.y -= jump_force
 
 # Player jump
 func jump():
 	player.jump_tween()
 	AudioManager.jump_sfx.play()
-	player.velocity.y = -jump_force
 
 
 
